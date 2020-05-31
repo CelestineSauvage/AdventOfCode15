@@ -16,7 +16,7 @@ int parseMap (string code){
   houses.push_back(coord);
   for (char const &c: code) {
     switch (c) {
-  		case '^':
+      case '^':
         coord.second = coord.second + 1;
         break;
       case 'v':
