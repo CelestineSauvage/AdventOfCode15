@@ -1,23 +1,18 @@
-#include "Action.h"
+#include "action.hpp"
 
-using namespace std;
-
-// Action::Action(pair<int, int> x,pair<int, int> y) : x(make_pair(0,0)), y(make_pair(0,0)) {}
-Action::Action(pair<int, int> x,pair<int, int> y) : x(x), y(y) {}
-
-void Action::setX(pair<int, int> x) {
+void Action::setX(std::pair<int, int> x) {
   this->x = x;
 }
 
-void Action::setY(pair<int, int> y) {
+void Action::setY(std::pair<int, int> y) {
   this->y = y;
 }
 
-pair<int, int> Action::getX() const {
+std::pair<int, int> Action::getX() const {
   return this->x;
 }
 
-pair<int, int> Action::getY() const {
+std::pair<int, int> Action::getY() const {
   return this->y;
 }
 
