@@ -10,6 +10,10 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 add_executable(
   app
   src/main.cpp
+  src/action.cpp
+  src/toggle.cpp
+  src/turn_on.cpp
+  src/turn_off.cpp
 )
 
 TARGET_LINK_LIBRARIES( app LINK_PUBLIC ${Boost_LIBRARIES} )

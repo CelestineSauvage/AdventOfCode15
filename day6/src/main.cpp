@@ -5,111 +5,16 @@
 #include <algorithm>
 
 #include <boost/algorithm/string.hpp>
+#include "lib.hpp"
+#include "action.hpp"
+#include "toggle.hpp"
+#include "turn_on.hpp"
+#include "turn_off.hpp"
 
 using namespace std;
 
 bool lights[1000][1000];
 int lights2[1000][1000];
-
-class Action
-{
-public:
-  // Constructeurs
-
-  //Accesseurs et mutateurs
-  void setX(pair<int, int> x) {
-    this->x = x;
-  }
-
-  void setY(pair<int, int> y) {
-    this->y = y;
-  }
-
-  pair<int, int> getX() const {
-    return this->x;
-  }
-
-  pair<int, int> getY() const {
-    return this->y;
-  }
-
-  int getX1() {
-    return getX().first;
-  }
-
-  int getX2() {
-    return getY().first;
-  }
-
-  int getY1() {
-    return getX().second;
-  }
-
-  int getY2() {
-    return getY().second;
-  }
-
-  virtual void changelights();
-  virtual void changebrighness();
-
-protected:
-  std::pair<int,int> x,y;
-};
-
-class Toggle : public Action {
-
-  void changelights() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights[i][j] = !lights[i][j];
-    }
-  }
-
-  void changebrighness() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights2[i][j] = lights2[i][j]+2;
-    }
-  }
-
-};
-
-class TurnOn : public Action {
-
-  void changelights() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights[i][j] = true;
-    }
-  }
-
-  void changebrighness() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights2[i][j] = lights2[i][j] + 1;
-    }
-  }
-
-};
-
-
-class TurnOff : public Action {
-
-  void changelights() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights[i][j] = false;
-    }
-  }
-
-  void changebrighness() {
-    for (int i = getX1() ; i <= getX2(); i++){
-      for (int j = getY1(); j <= getY2(); j++)
-      lights2[i][j] = (lights2[i][j] == 0) ? 0 : lights2[i][j]-1;
-    }
-  }
-
-};
 
 void initialize() {
   for (int i = 0; i < 1000; i++){
